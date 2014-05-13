@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1400003869 source:c:\users\conor\documents\github\mouseisland\mouseisland\islandthing.cpp
+	"IslandThing.h"
+
+1400003869 c:\users\conor\documents\github\mouseisland\mouseisland\islandthing.h
+
+1400005178 source:c:\users\conor\documents\github\mouseisland\mouseisland\main.cpp
+	<curses.h>
+	"IslandControl.h"
+
+1400005452 c:\users\conor\documents\github\mouseisland\mouseisland\islandcontrol.h
+	<vector>
+	<string>
+	<ctime>
+	"IslandThing.h"
+	"Animals.h"
+
+1400005596 c:\users\conor\documents\github\mouseisland\mouseisland\animals.h
+	"IslandThing.h"
+
