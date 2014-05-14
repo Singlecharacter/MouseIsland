@@ -22,6 +22,8 @@ public:
     IslandControl();
     ~IslandControl();
 
+    void init_curses();
+
     void simulate();
     void runSimulation();
     void resetSimulation();
@@ -43,7 +45,7 @@ private:
 
     std::string islandName;
 
-    int numberOfSims,randSeed;
+    int numberOfSims,startSims,randSeed;
     int turnCounter,turnsRemaining;
     int catStartX,catStartY,mouseStartX,mouseStartY;
     int islandHeight,islandWidth;
@@ -51,6 +53,8 @@ private:
     bool mouseInHole, catOnIsland;
 
     Mouse::deathType currentDeath;
+
+    WINDOW *islandWin;
 
     std::vector<IslandThing*> foodStorage;
 

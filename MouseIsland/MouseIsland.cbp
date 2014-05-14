@@ -39,9 +39,12 @@
 		<Unit filename="Animals.cpp" />
 		<Unit filename="Animals.h" />
 		<Unit filename="Food.h" />
+		<Unit filename="IslandControl.cpp" />
 		<Unit filename="IslandControl.h" />
 		<Unit filename="IslandThing.cpp" />
 		<Unit filename="IslandThing.h" />
+		<Unit filename="customio.cpp" />
+		<Unit filename="customio.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

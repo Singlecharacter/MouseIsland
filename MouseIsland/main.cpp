@@ -6,6 +6,8 @@ int main()
 
     controller.getInitialInput();
 
+    controller.init_curses();
+
     controller.simulate();
 
     controller.logResults();
