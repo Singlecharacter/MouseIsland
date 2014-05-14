@@ -30,7 +30,19 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/bin" />
 		</Compiler>
+		<Linker>
+			<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\pdcurses.lib" />
+			<Add directory="C:/Program Files (x86)/CodeBlocks/MinGW/lib" />
+		</Linker>
+		<Unit filename="Animals.cpp" />
+		<Unit filename="Animals.h" />
+		<Unit filename="Food.h" />
+		<Unit filename="IslandControl.h" />
+		<Unit filename="IslandThing.cpp" />
+		<Unit filename="IslandThing.h" />
+		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

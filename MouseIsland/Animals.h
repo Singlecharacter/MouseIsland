@@ -15,7 +15,8 @@ public:
         DROWNED,
         STARVED,
         EATEN,
-        NONE
+        NONE,
+        NUM_DEATH_TYPES
     };
 };
 
