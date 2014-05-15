@@ -90,8 +90,8 @@ bool IslandControl::runOneFrame()
     int prevCatY = cat->getY();
 
     printIsland();
-    int mouseDir = rand() % 3;
-    int catDir = rand() % 3;
+    int mouseDir = rand() % 4;
+    int catDir = rand() % 4;
 
     if(mouseDir == 0) //right
     {
@@ -134,6 +134,8 @@ bool IslandControl::runOneFrame()
     int mouseY = mouse->getY();
     int catX = cat->getX();
     int catY = cat->getY();
+
+    heatMap[mouseY][mouseX] += 1;
 
     if(islandArray[catY][catX] == '~')
     {
@@ -182,6 +184,17 @@ bool IslandControl::runOneFrame()
             return false;
         }
     }
+
+    for(int i = 0;i<foodStorage.size();i++)
+    {
+        if(foodStorage.at(i)->getX() == mouseX && foodStorage.at(i)->getY() == mouseY && foodStorage.at(i)->getShown())
+        {
+            foodStorage.at(i)->setShown(false);
+            turnsRemaining = 100;
+        }
+    }
+
+    return true;
 }
 
 void IslandControl::getInitialInput()
@@ -293,8 +306,11 @@ void IslandControl::printIsland()
     wmove(islandWin,mouse->getY(),mouse->getX());
     waddch(islandWin,mouse->getDisplayChar());
 
-    wmove(islandWin,cat->getY(),cat->getX());
-    waddch(islandWin,cat->getDisplayChar());
+    if(catOnIsland)
+    {
+        wmove(islandWin,cat->getY(),cat->getX());
+        waddch(islandWin,cat->getDisplayChar());
+    }
 
     /*for(int i = 0;i<foodStorage.size();i++)
     {
@@ -310,10 +326,29 @@ void IslandControl::logResults()
     std::ofstream outFile;
     outFile.open("log.txt",std::ofstream::app);
 
-    outFile << islandName << std::endl;
-    outFile << startSims << std::endl;
-    outFile << randSeed << std::endl;
+    outFile << "Island name: " << islandName << std::endl;
+    outFile << "Number of simulations: " << startSims << std::endl;
+    outFile << "Seed: " << randSeed << std::endl;
+    outFile << std::endl;
 
+    outFile << "Heat map: " << std::endl;
+
+    for(int i = 0;i<islandHeight;i++)
+    {
+        for(int j = 0;j<islandWidth;j++)
+        {
+            outFile << heatMap[i][j] << " ";
+        }
+        outFile << std::endl;
+    }
+    outFile << std::endl;
+
+    outFile << "Mouse drowned: " << deathCounters[Mouse::DROWNED] << std::endl;
+    outFile << "Mouse starved: " << deathCounters[Mouse::STARVED] << std::endl;
+    outFile << "Mouse eaten: " << deathCounters[Mouse::EATEN] << std::endl;
+    outFile << "Mouse survived: " << deathCounters[Mouse::NONE] << std::endl;
+
+    outFile << std::endl;
     outFile.close();
 }
 
